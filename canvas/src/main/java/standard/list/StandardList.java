@@ -1,5 +1,7 @@
 package standard.list;
 
+import java.util.List;
+
 import nodes.NodeCreator;
 
 public class StandardList extends NodeCreator{
@@ -29,11 +31,14 @@ public class StandardList extends NodeCreator{
 			
 		}
 	}
-	public void addDescriptionItem(String item,String description) {
+	public void addDescriptionItem(String item,List<String> description) {
 		DT dt=new DT();
 		DD dd=new DD();
 		dt.setContent(item);
-		dd.setContent(description);
-		setContent(getContent()+dt.createPairNode()+dd.createPairNode());
+		setContent(getContent()+dt.createPairNode());
+		for(String x : description) {
+			dd.setContent(x);
+			setContent(getContent()+dd.createPairNode());
+		}
 	}
 }

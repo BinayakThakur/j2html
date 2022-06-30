@@ -41,11 +41,38 @@ public class Painter extends Brush{
 		/*
 		 * Painting
 		 */
-	
+		makeList(Arrays.asList("Data1","Data2","Data3","Data4","Data5"));
 	
 		canvas.paint();
 	}
 	
-
+	public static void makeTable(List<List<String>> data,List<String> headings) {
+		//Creating component
+		Table myTable=new Table();
+		
+		//Adding Heading
+		myTable.addHeading(headings);
+		
+		//Adding Data
+		data.forEach(myTable::addData);
+		
+		//Adding Table.page
+		addNode(myTable.createPairNode());
+	}
+	
+	public static void makeList(List<String> data) {
+		StandardList list=new StandardList();
+		//Ordered List
+		list.changeToOrderedList();
+		data.forEach(list::addItem);
+		addNode(list.createPairNode());
+		//Unordered List
+		list.changeToUnorderedList();
+		addNode(list.createPairNode());
+		//Description List
+		list.setContent("");
+		list.changeToDescriptionList();
+		list.addDescriptionItem("This is description list", data);
+		addNode(list.createPairNode());
+	}
 }
-
