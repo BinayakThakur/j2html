@@ -35,14 +35,13 @@ public class Painter extends Brush{
 		 * Setting up meta data
 		 */
 		setPageTitle("Let's Roll");
-		clearNodes();
+		clearNodes();	
 
 		
 		/*
 		 * Painting
 		 */
-		makeList(Arrays.asList("Data1","Data2","Data3","Data4","Data5"));
-	
+		(new CustomForm()).styleExample();
 		canvas.paint();
 	}
 	

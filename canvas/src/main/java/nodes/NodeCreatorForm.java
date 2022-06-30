@@ -1,6 +1,8 @@
 package nodes;
 
-public class NodeCreatorForm {
+import custom.processor.CSSLoader;
+
+public class NodeCreatorForm extends CSSLoader{
 	String Tag="";
 	String content="";
 	String layout="";
@@ -14,7 +16,7 @@ public class NodeCreatorForm {
 	String value="";
 	String action="";
 	public String createPairNode(){
-		return "<"+this.Tag+placeholder+type+name+value+action+" >"+ this.content   + "</"+this.Tag+">";
+		return "<"+this.Tag+placeholder+style+type+name+value+action+" >"+ this.content   + "</"+this.Tag+">";
 	}
 	public void setType(String type) {
 		this.type=" type="+type;
@@ -49,6 +51,9 @@ public class NodeCreatorForm {
 	}
 	public String getValue() {
 		return this.value;
+	}
+	public void setStyle(String styleClass) {
+		this.style=" style='"+getProperty(styleClass)+"' ";
 	}
 	
 }

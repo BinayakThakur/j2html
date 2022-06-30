@@ -1,6 +1,8 @@
 package nodes;
 
-public class NodeCreator{
+import custom.processor.CSSLoader;
+
+public class NodeCreator extends CSSLoader{
 	String Tag="";
 	String content="";
 	String layout="";
@@ -9,12 +11,12 @@ public class NodeCreator{
 	String href="";
 	public String createPairNode(){
 		if(Tag.equals("img")) {
-			return "<"+this.Tag+" "+"src ="+href+"/>";
+			return "<"+this.Tag+style+" "+"src ="+href+"/>";
 		}
 		if(href.length()>0) {
-			return "<"+this.Tag+" "+"href ="+href+">"+ this.content   + "</"+this.Tag+">";
+			return "<"+this.Tag+style+" "+"href ="+href+">"+ this.content   + "</"+this.Tag+">";
 		}
-		return "<"+this.Tag+">"+ this.content   + "</"+this.Tag+">";
+		return "<"+this.Tag+style+">"+ this.content   + "</"+this.Tag+">";
 	}
 	public void setTag(String tag) {
 			this.Tag=tag;
@@ -27,6 +29,9 @@ public class NodeCreator{
 	}
 	public String getContent() {
 		return content;
+	}
+	public void setStyle(String styleClass) {
+		this.style=" style='"+getProperty(styleClass)+"' ";
 	}
 	
 }
